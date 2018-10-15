@@ -1,0 +1,10 @@
+@import "../../../../../../Static/Contants.module";
+@import "../../TopBar.module";
+
+.PageLink
+{
+    display: inline-block;
+    color: $lightFontColor;
+    line-height: $topBarHeight;
+    margin: 0 1rem;
+}

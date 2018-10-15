@@ -1,0 +1,16 @@
+@import "../../../../Static/Contants.module";
+
+$topBarHeight: 2.5rem;
+
+.TopBar
+{
+    height: $topBarHeight;
+    background-color: #333;
+    box-shadow: $box-shadow;
+}
+
+.linkWrapper
+{
+    height: 100%;
+    display: inline-block;
+}
