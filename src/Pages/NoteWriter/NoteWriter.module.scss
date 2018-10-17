@@ -1,0 +1,10 @@
+$fileInfoAreaHeight: 5rem;
+
+.NoteWriter
+{
+    .fileInfoArea
+    {
+        height: $fileInfoAreaHeight;
+        border-bottom: 1px solid #AAA;
+    }
+}

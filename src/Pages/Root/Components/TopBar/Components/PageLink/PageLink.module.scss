@@ -6,5 +6,11 @@
     display: inline-block;
     color: $lightFontColor;
     line-height: $topBarHeight;
-    margin: 0 1rem;
+    margin: 0 0.75rem;
+
+    .icon
+    {
+        display: inline-block;
+        margin-right: 0.5rem;
+    }
 }

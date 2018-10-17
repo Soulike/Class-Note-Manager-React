@@ -1,0 +1,4 @@
+export const LOGIN_SUCCESS = 'LOGIN/LOGIN_SUCCESS';
+
+export const LOGIN_FAILED = 'LOGIN/LOGIN_FAILED';
+

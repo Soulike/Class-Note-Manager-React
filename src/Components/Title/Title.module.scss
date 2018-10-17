@@ -1,0 +1,12 @@
+@import "../../Static/Contants.module";
+
+.Title
+{
+    width: 100%;
+    text-align: center;
+    font-family: $serif;
+    font-weight: bold;
+    font-size: 2rem;
+    color: $darkFontColor;
+    user-select: none;
+}

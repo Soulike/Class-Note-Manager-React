@@ -1,0 +1,34 @@
+@import "../../../../Static/Contants.module";
+@import "../../NoteWriter.module";
+
+.FileName
+{
+    display: inline-block;
+    margin: ($fileInfoAreaHeight - 1.25rem - 0.5rem - 1.25rem) / 2 0;
+    margin-left: 1rem;
+
+    .title
+    {
+        color: #666;
+        margin-bottom: 0.5rem;
+        font-size: 0.75rem;
+        line-height: 1.25rem;
+    }
+
+    .input
+    {
+        background: transparent;
+        color: $darkFontColor;
+        border: none;
+        font-size: 1.25rem;
+        height: 1.25rem;
+        width: 50rem;
+        font-family: $serif;
+        font-weight: bold;
+
+        &:focus
+        {
+            outline: none;
+        }
+    }
+}

@@ -1,16 +1,45 @@
 @import "../../../../Static/Contants.module";
 
-$topBarHeight: 2.5rem;
+$topBarHeight: 3rem;
 
 .TopBar
 {
     height: $topBarHeight;
     background-color: #333;
+    background: linear-gradient(to bottom, #222, #333);
     box-shadow: $box-shadow;
-}
+    padding: 0 2rem;
+    user-select: none;
 
-.linkWrapper
-{
-    height: 100%;
-    display: inline-block;
+    .linkWrapper
+    {
+        height: 100%;
+        display: inline-block;
+        margin: 0 2rem;
+    }
+
+    .title
+    {
+        display: inline-block;
+        font:
+        {
+            size: 1.5rem;
+            family: $serif;
+            weight: bold;
+        }
+        line-height: $topBarHeight;
+
+        color: $lightFontColor;
+
+        .icon
+        {
+            display: inline-block;
+            margin-right: 0.5rem;
+        }
+    }
+
+    a
+    {
+        color: $lightFontColor;
+    }
 }

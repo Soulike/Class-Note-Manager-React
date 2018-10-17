@@ -11,7 +11,9 @@ class Root extends Component
         return (
             <div className={style.Root}>
                 <TopBar/>
-                {this.props.children}
+                <div className={style.innerWrapper}>
+                    {this.props.children}
+                </div>
             </div>
         );
     }
