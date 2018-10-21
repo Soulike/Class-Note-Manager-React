@@ -1,0 +1,26 @@
+.NoteList
+{
+    $borderStyle: #DDD 1px solid;
+    width: 60rem;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    border:
+    {
+        left: $borderStyle;
+        right: $borderStyle;
+    }
+    box-shadow: 0 3px 5px #AAA;
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    overflow: auto;
+
+    .listArea
+    {
+        margin-top: 5rem;
+    }
+}

@@ -1,0 +1,95 @@
+.NoteCard
+{
+    width: 100%;
+    border: #DDD 1px solid;
+    margin: 2rem 0;
+    padding: 1rem 1.5rem;
+    box-sizing: border-box;
+    border-radius: 0.5rem;
+    box-shadow: 3px 3px 3px #AAA;
+    transition: 0.25s;
+    color: #666;
+
+    &:hover
+    {
+        background-color: #FFF;
+        color: #000;
+        transform: translateY(-5%);
+        box-shadow: 3px 10px 3px #AAA;
+    }
+
+    .left
+    {
+        font-size: 4rem;
+        width: 4rem;
+        text-align: center;
+        display: inline-block;
+        margin-right: 1rem;
+
+        .leftIcon
+        {
+            line-height: 100%;
+        }
+    }
+
+    .right
+    {
+        width: 90%;
+        display: inline-block;
+
+        .upper
+        {
+            .noteName
+            {
+                display: inline-block;
+                font-size: 2rem;
+                line-height: 2rem;
+            }
+
+            .buttonWrapper
+            {
+                display: inline-block;
+                float: right;
+
+                button
+                {
+                    border: none;
+                    outline: none;
+                    background: none;
+                    color: inherit;
+                    transition: 0.25s;
+
+                    &.modifyButton
+                    {
+                        &:hover
+                        {
+                            color: #46AFE8;
+                        }
+                    }
+
+                    &.deleteButton
+                    {
+                        &:hover
+                        {
+                            color: #DD0000;
+                        }
+                    }
+                }
+
+                .buttonIcon
+                {
+                    display: inline-block;
+                    font-size: 2rem;
+                    margin-left: 1rem;
+                }
+            }
+        }
+
+        .lastModifiedDate
+        {
+            margin-top: 1rem;
+            color: #666;
+        }
+    }
+
+}
