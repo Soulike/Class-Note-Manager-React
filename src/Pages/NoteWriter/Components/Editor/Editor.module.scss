@@ -1,0 +1,23 @@
+@import "../../../../Static/Contants.module";
+
+.Editor
+{
+    border: 1px solid #666;
+    border-radius: 0.25rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 1rem;
+
+    .editorInput
+    {
+        width: 100%;
+        height: 100%;
+        outline: none;
+        border: none;
+        color: $darkFontColor;
+        line-height: 1.5rem;
+    }
+}

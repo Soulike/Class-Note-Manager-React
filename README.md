@@ -21,3 +21,13 @@
     ……
 ]
 ```
+- /server/getNote
+    - 参数 id：要获取的笔记 id
+    - 返回 data
+```js
+{
+    title: 'string',
+    content: 'HTML',
+    lastModifiedDate: 'number'
+}
+```
