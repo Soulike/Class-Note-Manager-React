@@ -19,5 +19,9 @@
         border: none;
         color: $darkFontColor;
         line-height: 1.5rem;
+        background-color: inherit;
+        font-family: $sans-serif;
+        overflow: auto;
+        resize: none;
     }
 }

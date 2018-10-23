@@ -1,0 +1,8 @@
+@import "../../../../Static/Article.module";
+
+.Previewer
+{
+    @extend .Article;
+    width: 100%;
+    height: 100%;
+}

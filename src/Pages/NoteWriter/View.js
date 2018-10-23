@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import style from './NoteWriter.module.scss';
 import {View as FileName} from './Components/FileName';
 import {View as Editor} from './Components/Editor';
+import {View as Previewer} from './Components/Previewer';
 
 class NoteWriter extends Component
 {
@@ -17,7 +18,7 @@ class NoteWriter extends Component
                         <Editor/>
                     </div>
                     <div className={style.previewer}>
-
+                        <Previewer/>
                     </div>
                 </div>
             </div>

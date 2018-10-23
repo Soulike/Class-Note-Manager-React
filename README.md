@@ -31,3 +31,7 @@
     lastModifiedDate: 'number'
 }
 ```
+
+- /server/noteConvert
+    - 参数 markdown，markdown原文
+    - 返回值 data，字符串，含有转换后的html
