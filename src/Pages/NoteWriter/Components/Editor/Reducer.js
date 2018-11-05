@@ -1,4 +1,4 @@
-import {CONVERT_SUCCESS, CONVERT_FAILED} from './Actions/ActionTypes';
+import {CONVERT_FAILED, CONVERT_SUCCESS} from './Actions/ActionTypes';
 
 export default (state = {}, action) =>
 {
@@ -7,7 +7,7 @@ export default (state = {}, action) =>
     {
         return {
             ...state,
-            html: action.html
+            innerHTML: action.innerHTML
         };
     }
     else if (type === CONVERT_FAILED)
