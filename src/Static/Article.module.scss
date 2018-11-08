@@ -2,6 +2,8 @@
 
 .Article
 {
+    line-height: 1.5rem;
+
     p
     {
         text-indent: 2rem;
@@ -65,7 +67,6 @@
     {
         code
         {
-            padding: 0.75rem 1.5rem;
             user-select: text;
         }
 
