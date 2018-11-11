@@ -29,9 +29,11 @@ class NoteWriter extends Component
 
     onSubmitButtonClick = e =>
     {
+        const fileName = localStorageGet('fileName');
         const noteContent = localStorageGet('noteContent');
         const {noteId} = this.state;
         postAsync(requestPrefix('/submitNote'), {
+            fileName,
             noteContent,
             noteId
         })
