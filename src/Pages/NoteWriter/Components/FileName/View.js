@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {localStorageGet, localStorageRemove, localStorageSet} from '../../../../Static/Functions';
+import PropTypes from 'prop-types';
+import {localStorageGet, localStorageSet} from '../../../../Static/Functions';
 import style from './FileName.module.scss';
 
 class FileName extends Component
@@ -7,14 +8,25 @@ class FileName extends Component
     componentDidMount()
     {
         const fileName = this.getStoredFileName();
+
         if (fileName)
         {
             this.refs.filename.value = fileName;
+            this.storeFileName(fileName);
         }
         else
         {
             this.refs.filename.value = '未命名';
             this.storeFileName('未命名');
+        }
+    }
+
+    componentDidUpdate(prevProp, prevState, snapshot)
+    {
+        const {title} = this.props;
+        if (title)
+        {
+            this.refs.filename.value = title;
         }
     }
 
@@ -47,5 +59,9 @@ class FileName extends Component
         );
     }
 }
+
+FileName.propTypes = {
+    title: PropTypes.string      // 用于预先填充数据
+};
 
 export default FileName;

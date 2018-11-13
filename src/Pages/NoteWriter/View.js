@@ -4,7 +4,7 @@ import style from './NoteWriter.module.scss';
 import {View as FileName} from './Components/FileName';
 import {View as Editor} from './Components/Editor';
 import {View as Previewer} from './Components/Previewer';
-import {localStorageGet, postAsync, requestPrefix} from '../../Static/Functions';
+import {getAsync, localStorageGet, localStorageRemove, postAsync, requestPrefix} from '../../Static/Functions';
 import {View as Alert} from '../../Components/Alert';
 
 class NoteWriter extends Component
@@ -13,7 +13,9 @@ class NoteWriter extends Component
     {
         super(...arguments);
         this.state = {
-            noteId: -1
+            noteId: -1,
+            title: undefined,
+            noteContent: undefined
         };
     }
 
@@ -24,6 +26,27 @@ class NoteWriter extends Component
         if (noteId !== undefined)
         {
             this.setState({noteId});
+            getAsync(requestPrefix('/getNoteRaw'), false, {id: noteId})
+                .then(res =>
+                {
+                    const {isSuccess, msg, data} = res;
+                    if (isSuccess)
+                    {
+                        const {title, content} = data;
+                        this.setState({
+                            title,
+                            noteContent: content
+                        });
+                    }
+                })
+                .catch(e =>
+                {
+                    Alert.show('获取笔记内容失败');
+                    setTimeout(() =>
+                            browserHistory.push('/NoteList'),
+                        1000);
+                    console.log(e);
+                });
         }
     }
 
@@ -43,7 +66,9 @@ class NoteWriter extends Component
                 Alert.show(msg, isSuccess);
                 if (isSuccess)
                 {
-                    browserHistory.push('/');
+                    browserHistory.push('/NoteList');
+                    localStorageRemove('fileName');
+                    localStorageRemove('noteContent');
                 }
             })
             .catch(e =>
@@ -56,15 +81,16 @@ class NoteWriter extends Component
 
     render()
     {
+        const {title, noteContent} = this.state;
         return (
             <div className={style.NoteWriter}>
                 <div className={style.fileInfoArea}>
-                    <FileName/>
+                    <FileName title={title}/>
                     <button className={style.submitButton} onClick={this.onSubmitButtonClick}>提交</button>
                 </div>
                 <div className={style.editorArea}>
                     <div className={style.editor}>
-                        <Editor/>
+                        <Editor noteContent={noteContent}/>
                     </div>
                     <div className={style.previewer}>
                         <Previewer/>

@@ -32,6 +32,17 @@
 }
 ```
 
+- /server/getNoteRaw
+    - 参数 id：要获取的笔记原文 id
+    - 返回 data
+    
+```js
+{
+    title: 'string',
+    content: 'markdown',
+}
+```
+
 - /server/noteConvert
     - 参数 markdown，markdown原文
     - 返回值 data，字符串，含有转换后的html

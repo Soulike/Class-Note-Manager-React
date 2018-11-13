@@ -27,6 +27,11 @@ class NoteCard extends Component
                     {
                         const {isSuccess, msg, data} = res;
                         Alert.show(msg, isSuccess);
+                        setTimeout(() =>
+                        {
+                            document.location.reload();
+                        }, 1000);
+
                     })
                     .catch(e =>
                     {
