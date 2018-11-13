@@ -14,7 +14,7 @@ class Previewer extends Component
     }
 }
 
-Previewer.PropTypes = {
+Previewer.propTypes = {
     innerHTML: PropTypes.string.isRequired
 };
 

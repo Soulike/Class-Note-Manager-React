@@ -12,9 +12,9 @@ class NoteWriter extends Component
     constructor()
     {
         super(...arguments);
-        this.setState({
+        this.state = {
             noteId: -1
-        });
+        };
     }
 
 
@@ -41,7 +41,10 @@ class NoteWriter extends Component
             {
                 const {isSuccess, msg, data} = res;
                 Alert.show(msg, isSuccess);
-                browserHistory.push('/');
+                if (isSuccess)
+                {
+                    browserHistory.push('/');
+                }
             })
             .catch(e =>
             {

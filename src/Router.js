@@ -1,9 +1,8 @@
 import React from 'react';
-import {Router, Route, IndexRoute, browserHistory} from 'react-router';
-import {requireLogin} from './Static/Functions';
+import {browserHistory, IndexRoute, Route, Router} from 'react-router';
+import {Functions as LoginFunctions, View as Login} from './Pages/Login';
 import {View as Root} from './Pages/Root';
 import {View as NoteList} from './Pages/NoteList';
-import {View as Login} from './Pages/Login';
 import {View as NoteWriter} from './Pages/NoteWriter';
 import {View as NoteReader} from './Pages/NoteReader';
 
@@ -14,10 +13,10 @@ const Routes = () => (
     <Router history={browserHistory}>
         <Route path={'/'} component={Root}>
             <IndexRoute component={Login}/>
-            <Route path={'/NoteList'} component={NoteList} onEnter={requireLogin}/>
+            <Route path={'/NoteList'} component={NoteList} onEnter={LoginFunctions.requireLogin}/>
             <Route path={'/Login'} component={Login}/>
-            <Route path={'/NoteWriter'} component={NoteWriter} onEnter={requireLogin}/>
-            <Route path={'/NoteReader'} component={NoteReader} onEnter={requireLogin}/>
+            <Route path={'/NoteWriter'} component={NoteWriter} onEnter={LoginFunctions.requireLogin}/>
+            <Route path={'/NoteReader'} component={NoteReader} onEnter={LoginFunctions.requireLogin}/>
         </Route>
     </Router>
 );

@@ -1,5 +1,6 @@
-import {CONVERT_SUCCESS, CONVERT_FAILED} from './ActionTypes';
+import {CONVERT_FAILED, CONVERT_SUCCESS} from './ActionTypes';
 import {postAsync, requestPrefix} from '../../../../../Static/Functions';
+import {View as Alert} from '../../../../../Components/Alert';
 
 export function convert(markdown)
 {
@@ -15,7 +16,7 @@ export function convert(markdown)
             else
             {
                 convertFailed();
-                console.log(msg);
+                Alert.show(msg, false);
             }
         }
         catch (e)

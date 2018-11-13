@@ -1,7 +1,5 @@
 import axios from 'axios';
 import crypto from 'crypto';
-import Store from '../Store';
-import {View as Alert} from '../Components/Alert';
 
 export function requestPrefix(url)
 {
@@ -124,16 +122,6 @@ export function generateTimeStr(time)
     else if (diff >= MILLISECONDS.SECOND)
     {
         return `${floor(diff / MILLISECONDS.SECOND)} 秒前`;
-    }
-}
-
-export function requireLogin(nextState, replace)
-{
-    const {hasLoggedIn} = Store.getState()['Login'];
-    if (!hasLoggedIn)
-    {
-        Alert.show('请先登录', false);
-        replace('/Login');
     }
 }
 
