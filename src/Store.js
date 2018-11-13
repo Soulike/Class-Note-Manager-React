@@ -7,7 +7,7 @@ import {Reducer as NoteWriterEditorReducer} from './Pages/NoteWriter/Components/
 // Store 中的初始值，根据开发需要进行改变
 const initValues = {
     Login: {
-        hasLoggedIn: false
+        hasLoggedIn: true
     },
     NoteWriterEditor: {
         innerHTML: ''
