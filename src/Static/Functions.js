@@ -123,6 +123,10 @@ export function generateTimeStr(time)
     {
         return `${floor(diff / MILLISECONDS.SECOND)} 秒前`;
     }
+    else
+    {
+        return `刚刚`;
+    }
 }
 
 export function localStorageSet(key, value)

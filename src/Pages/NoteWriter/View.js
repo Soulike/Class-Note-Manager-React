@@ -6,6 +6,7 @@ import {View as Editor} from './Components/Editor';
 import {View as Previewer} from './Components/Previewer';
 import {getAsync, localStorageGet, localStorageRemove, postAsync, requestPrefix} from '../../Static/Functions';
 import {View as Alert} from '../../Components/Alert';
+import {checkSession} from '../Login/Functions';
 
 class NoteWriter extends Component
 {
@@ -22,6 +23,7 @@ class NoteWriter extends Component
 
     componentDidMount()
     {
+        checkSession();
         const {noteId} = this.props.location.query;
         if (noteId !== undefined)
         {

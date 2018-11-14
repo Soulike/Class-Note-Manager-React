@@ -1,7 +1,8 @@
-import {LOGIN_SUCCESS, LOGIN_FAILED} from './ActionTypes';
+import {LOGIN_FAILED, LOGIN_SUCCESS} from './ActionTypes';
 import {getHash, postAsync, requestPrefix} from '../../../Static/Functions';
 import {browserHistory} from 'react-router';
 import {View as Alert} from '../../../Components/Alert';
+import {setLocalStorageOfflineItem, setLocalStorageOnlineItem} from '../Functions';
 
 export function login(username, password)
 {
@@ -28,12 +29,14 @@ export function login(username, password)
                 const {isSuccess, msg} = res;
                 if (isSuccess)
                 {
-                    dispatch(loginSuccess());
                     browserHistory.push('/NoteList');
+                    dispatch(loginSuccess());
+                    setLocalStorageOnlineItem();
                 }
                 else
                 {
                     dispatch(loginFailed());
+                    setLocalStorageOfflineItem();
                 }
                 Alert.show(msg, isSuccess);
             }

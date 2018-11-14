@@ -3,6 +3,7 @@ import style from './NoteReader.module.scss';
 import Title from '../../Components/Title/View';
 import {generateTimeStr, getAsync, requestPrefix} from '../../Static/Functions';
 import {View as Alert} from '../../Components/Alert';
+import {checkSession} from '../Login/Functions';
 
 class NoteReader extends Component
 {
@@ -18,6 +19,7 @@ class NoteReader extends Component
 
     componentDidMount()
     {
+        checkSession();
         const {id} = this.props.location.query;
         getAsync(requestPrefix('/getNote'), false, {id})
             .then(res =>

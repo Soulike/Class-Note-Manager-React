@@ -1,13 +1,13 @@
 import {applyMiddleware, combineReducers, compose, createStore} from 'redux';
 import thunk from 'redux-thunk';
 
-import {Reducer as LoginReducer} from './Pages/Login';
+import LoginReducer from './Pages/Login/Reducer';
 import {Reducer as NoteWriterEditorReducer} from './Pages/NoteWriter/Components/Editor';
 
 // Store 中的初始值，根据开发需要进行改变
 const initValues = {
     Login: {
-        hasLoggedIn: true
+        hasLoggedIn: false
     },
     NoteWriterEditor: {
         innerHTML: ''

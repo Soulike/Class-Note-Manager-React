@@ -5,6 +5,7 @@ import {View as NoteCard} from './Components/NoteCard';
 import {View as Title} from '../../Components/Title';
 import {getAsync, requestPrefix} from '../../Static/Functions';
 import {View as Alert} from '../../Components/Alert';
+import {checkSession} from '../Login/Functions';
 
 class NoteList extends Component
 {
@@ -18,6 +19,7 @@ class NoteList extends Component
 
     componentDidMount()
     {
+        checkSession();
         getAsync(requestPrefix('/getNoteList'), false)
             .then(res =>
             {
