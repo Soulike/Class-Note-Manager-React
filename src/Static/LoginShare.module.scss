@@ -1,0 +1,43 @@
+@import "./Button.module";
+@import "./Input.module";
+
+.LoginShare {
+    width: 25rem;
+    margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+
+    .form {
+        display: block;
+        margin-top: 1.5rem;
+
+        .input {
+            @extend .Input;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            margin: 2rem 0;
+            font-size: 1.1rem;
+        }
+
+        .submitButton {
+            @extend .btn-primary, .btn-lg;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    }
+
+    .hint {
+        margin-top: 1rem;
+        line-height: 2rem;
+        text-align: center;
+        border: 1px solid #DDD;
+        box-shadow: 0 0 5px #DDD;
+        padding: 1rem 2rem;
+        background-color: #FFF;
+        border-radius: 0.25rem;
+    }
+}

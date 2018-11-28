@@ -9,12 +9,12 @@ class Editor extends Component
 {
     componentDidMount()
     {
-        const noteContent = localStorageGet('noteContent');
+        const content = localStorageGet('content');
 
-        if (noteContent)
+        if (content)
         {
-            this.refs.editorInput.value = noteContent;
-            Store.dispatch(convert(noteContent));
+            this.refs.editorInput.value = content;
+            Store.dispatch(convert(content));
         }
         else
         {
@@ -24,17 +24,17 @@ class Editor extends Component
 
     componentDidUpdate(prevProp, prevState, snapshot)
     {
-        const {noteContent} = this.props;
-        if (noteContent)
+        const {content} = this.props;
+        if (content)
         {
-            this.refs.editorInput.value = noteContent;
-            Store.dispatch(convert(noteContent));
+            this.refs.editorInput.value = content;
+            Store.dispatch(convert(content));
         }
     }
 
     onInput = (e) =>
     {
-        localStorageSet('noteContent', e.target.value);
+        localStorageSet('content', e.target.value);
         Store.dispatch(convert(e.target.value));
     };
 
@@ -53,7 +53,7 @@ class Editor extends Component
 }
 
 Editor.propTypes = {
-    noteContent: PropTypes.string  // 用于预先填充内容
+    content: PropTypes.string  // 用于预先填充内容
 };
 
 export default Editor;

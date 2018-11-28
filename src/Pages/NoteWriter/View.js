@@ -16,7 +16,7 @@ class NoteWriter extends Component
         this.state = {
             noteId: -1,
             title: undefined,
-            noteContent: undefined
+            content: undefined
         };
     }
 
@@ -28,7 +28,7 @@ class NoteWriter extends Component
         if (noteId !== undefined)
         {
             this.setState({noteId});
-            getAsync(requestPrefix('/getNoteRaw'), false, {id: noteId})
+            getAsync(requestPrefix('/getNote'), false, {id: noteId})
                 .then(res =>
                 {
                     const {isSuccess, msg, data} = res;
@@ -37,8 +37,12 @@ class NoteWriter extends Component
                         const {title, content} = data;
                         this.setState({
                             title,
-                            noteContent: content
+                            content
                         });
+                    }
+                    else
+                    {
+                        Alert.show(msg, false);
                     }
                 })
                 .catch(e =>
@@ -54,23 +58,24 @@ class NoteWriter extends Component
 
     onSubmitButtonClick = e =>
     {
+        e.preventDefault();
         const fileName = localStorageGet('fileName');
-        const noteContent = localStorageGet('noteContent');
+        const content = localStorageGet('content');
         const {noteId} = this.state;
         postAsync(requestPrefix('/submitNote'), {
             fileName,
-            noteContent,
+            content,
             noteId
         })
             .then(res =>
             {
-                const {isSuccess, msg, data} = res;
+                const {isSuccess, msg} = res;
                 Alert.show(msg, isSuccess);
                 if (isSuccess)
                 {
                     browserHistory.push('/NoteList');
                     localStorageRemove('fileName');
-                    localStorageRemove('noteContent');
+                    localStorageRemove('content');
                 }
             })
             .catch(e =>
@@ -83,7 +88,7 @@ class NoteWriter extends Component
 
     render()
     {
-        const {title, noteContent} = this.state;
+        const {title, content} = this.state;
         return (
             <div className={style.NoteWriter}>
                 <div className={style.fileInfoArea}>
@@ -92,7 +97,7 @@ class NoteWriter extends Component
                 </div>
                 <div className={style.editorArea}>
                     <div className={style.editor}>
-                        <Editor noteContent={noteContent}/>
+                        <Editor content={content}/>
                     </div>
                     <div className={style.previewer}>
                         <Previewer/>

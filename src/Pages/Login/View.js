@@ -4,6 +4,7 @@ import * as Actions from './Actions/Actions';
 import {View as Title} from '../../Components/Title';
 import style from './Login.module.scss';
 import {checkSession} from './Functions';
+import {Link} from 'react-router';
 
 class Login extends Component
 {
@@ -58,8 +59,11 @@ class Login extends Component
                            autoFocus={true}
                            onChange={this.onUsernameChange}/>
                     <input type="password" placeholder={'密码'} className={style.input} onChange={this.onPasswordChange}/>
-                    <button className={style.loginBtn} onClick={this.onSubmit}>登录</button>
+                    <button className={style.submitButton} onClick={this.onSubmit}>登录</button>
                 </form>
+                <div className={style.hint}>
+                    没有账号？<Link to={'/signUp'}>注册</Link>一个
+                </div>
             </div>
         );
     }

@@ -1,35 +1,7 @@
 @import "../../Static/Button.module";
 @import "../../Static/Input.module";
+@import "../../Static/LoginShare.module";
 
-.Login
-{
-    width: 25rem;
-    margin: 0 auto;
-    position: absolute;
-    left: 50%;
-    top: 40%;
-    transform: translate(-50%, -50%);
-
-    .form
-    {
-        display: block;
-        margin-top: 1.5rem;
-        .input
-        {
-            @extend .Input;
-            display: block;
-            width: 100%;
-            box-sizing: border-box;
-            margin: 2rem 0;
-            font-size: 1.1rem;
-        }
-
-        .loginBtn
-        {
-            @extend .btn-primary, .btn-lg;
-            display: block;
-            width: 100%;
-            box-sizing: border-box;
-        }
-    }
+.Login {
+    @extend .LoginShare;
 }

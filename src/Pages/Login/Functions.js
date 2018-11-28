@@ -1,6 +1,6 @@
 import Store from '../../Store';
 import {View as Alert} from '../../Components/Alert';
-import {loginFailed, loginSuccess} from './Actions/Actions';
+import {setOffline, setOnline} from './Actions/Actions';
 import {getAsync, localStorageGet, localStorageSet, requestPrefix} from '../../Static/Functions';
 
 export function requireLogin(nextState, replace)
@@ -20,16 +20,16 @@ export function checkSession()
     getAsync(requestPrefix('/validSession'), false)
         .then(res =>
         {
-            const {isSuccess, msg, data} = res;
+            const {isSuccess} = res;
             if (!isSuccess)
             {
-                setLocalStorageOfflineItem();
-                Store.dispatch(loginFailed());
+                setLocalStorageOfflineToken();
+                Store.dispatch(setOnline());
             }
             else
             {
-                setLocalStorageOnlineItem();
-                Store.dispatch(loginSuccess());
+                setLocalStorageOnlineToken();
+                Store.dispatch(setOffline());
             }
         })
         .catch(e =>
@@ -38,12 +38,12 @@ export function checkSession()
         });
 }
 
-export function setLocalStorageOnlineItem()
+export function setLocalStorageOnlineToken()
 {
     localStorageSet('hasLoggedIn', true);
 }
 
-export function setLocalStorageOfflineItem()
+export function setLocalStorageOfflineToken()
 {
     localStorageSet('hasLoggedIn', false);
 }

@@ -4,6 +4,7 @@ import Title from '../../Components/Title/View';
 import {generateTimeStr, getAsync, requestPrefix} from '../../Static/Functions';
 import {View as Alert} from '../../Components/Alert';
 import {checkSession} from '../Login/Functions';
+import showdown from 'showdown';
 
 class NoteReader extends Component
 {
@@ -13,8 +14,13 @@ class NoteReader extends Component
         this.state = {
             title: 'loading……',
             content: 'loading……',
-            lastModifiedDate: 0
+            lastModifyTime: 0
         };
+
+        this.converter = new showdown.Converter({
+            tables: true,
+            smoothLivePreview: true
+        });
     }
 
     componentDidMount()
@@ -27,11 +33,11 @@ class NoteReader extends Component
                 const {isSuccess, msg, data} = res;
                 if (isSuccess)
                 {
-                    const {title, content, lastModifiedDate} = data;
+                    const {title, content, lastModifyTime} = data;
                     this.setState({
                         title,
                         content,
-                        lastModifiedDate
+                        lastModifyTime
                     });
                 }
                 else
@@ -48,12 +54,12 @@ class NoteReader extends Component
 
     render()
     {
-        const {title, content, lastModifiedDate} = this.state;
+        const {title, content, lastModifyTime} = this.state;
         return (
             <div className={style.NoteReader}>
                 <Title text={title}/>
-                <div className={style.lastModified}>{generateTimeStr(lastModifiedDate)}</div>
-                <div className={style.content} dangerouslySetInnerHTML={{__html: content}}/>
+                <div className={style.lastModified}>{generateTimeStr(lastModifyTime)}</div>
+                <div className={style.content} dangerouslySetInnerHTML={{__html: this.converter.makeHtml(content)}}/>
             </div>
         );
     }

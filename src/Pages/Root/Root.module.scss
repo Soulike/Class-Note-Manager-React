@@ -1,7 +1,6 @@
 @import "../../Static/Contants.module";
 
-.Root
-{
+.Root {
     width: 100%;
     height: 100%;
     padding: 0;
@@ -10,19 +9,15 @@
     overflow: auto;
 }
 
-a
-{
+a {
     text-decoration: none;
-    color: inherit;
 }
 
-button
-{
+button {
     cursor: pointer;
 }
 
-.innerWrapper
-{
+.innerWrapper {
     position: relative;
     min-height: 100%;
     background-color: #FAFAFA;
