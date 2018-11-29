@@ -1,7 +1,6 @@
 import React from 'react';
 import {browserHistory, IndexRedirect, Route, Router} from 'react-router';
 import {Functions as LoginFunctions, View as Login} from './Pages/Login';
-import {Functions as NoteWriterFunctions, View as NoteWriter} from './Pages/NoteWriter';
 // 所有页面的 View 在此处导入
 import {View as SignUp} from './Pages/SignUp';
 import {View as Root} from './Pages/Root';
@@ -16,8 +15,7 @@ const Routes = () => (
             <Route path={'/Login'} component={Login}/>
             <Route path={'/SignUp'} component={SignUp}/>
             <Route path={'/NoteList'} component={NoteList} onEnter={LoginFunctions.requireLogin}/>
-            <Route path={'/NoteWriter'} component={NoteWriter} onEnter={LoginFunctions.requireLogin}
-                   onLeave={NoteWriterFunctions.showLeaveModal}/>
+            <Route path={'/NoteWriter'} component={NoteWriter} onEnter={LoginFunctions.requireLogin}/>
             <Route path={'/NoteReader'} component={NoteReader} onEnter={LoginFunctions.requireLogin}/>
         </Route>
     </Router>
