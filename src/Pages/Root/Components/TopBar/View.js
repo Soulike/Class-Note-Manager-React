@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import style from './TopBar.module.scss';
-import PageLink from './Components/PageLink/View';
+import {View as PageLink} from './Components/PageLink';
+import {Link} from 'react-router';
 import * as solidIcon from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
@@ -34,10 +35,12 @@ class TopBar extends Component
         return (
             <div className={style.TopBar}>
                 <div className={style.title}>
-                    <div className={style.icon}>
-                        <FontAwesomeIcon icon={solidIcon.faCode}/>
-                    </div>
-                    笔记管理
+                    <Link to={'/'}>
+                        <div className={style.icon}>
+                            <FontAwesomeIcon icon={solidIcon.faCode}/>
+                        </div>
+                        笔记管理
+                    </Link>
                 </div>
                 {hasLoggedIn ? <div className={style.linkWrapper}>
                     {

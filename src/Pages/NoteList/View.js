@@ -54,7 +54,6 @@ class NoteList extends Component
                                 return (
                                     <Link onlyActiveOnIndex={false}
                                           to={`/NoteReader?id=${note.id}`}
-                                          target={'_blank'}
                                           key={note.id}>
                                         <NoteCard {...note}/>
                                     </Link>

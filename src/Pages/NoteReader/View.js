@@ -12,7 +12,7 @@ class NoteReader extends Component
     {
         super(...arguments);
         this.state = {
-            title: 'loading……',
+            name: 'loading……',
             content: 'loading……',
             lastModifyTime: 0
         };
@@ -33,9 +33,9 @@ class NoteReader extends Component
                 const {isSuccess, msg, data} = res;
                 if (isSuccess)
                 {
-                    const {title, content, lastModifyTime} = data;
+                    const {name, content, lastModifyTime} = data;
                     this.setState({
-                        title,
+                        name,
                         content,
                         lastModifyTime
                     });
@@ -54,10 +54,10 @@ class NoteReader extends Component
 
     render()
     {
-        const {title, content, lastModifyTime} = this.state;
+        const {name, content, lastModifyTime} = this.state;
         return (
             <div className={style.NoteReader}>
-                <Title text={title}/>
+                <Title text={name}/>
                 <div className={style.lastModified}>{generateTimeStr(lastModifyTime)}</div>
                 <div className={style.content} dangerouslySetInnerHTML={{__html: this.converter.makeHtml(content)}}/>
             </div>

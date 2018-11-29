@@ -46,7 +46,7 @@
 - 返回 data
 ```js
 {
-    title: 'string',
+    name: 'string',
     content: 'markdown',
     lastModifyTime: 'number'
 }
@@ -56,8 +56,8 @@
 
 - 类型 POST
 - 参数 content，markdown 原文
-- 参数 noteId，如果是-1代表是新笔记，如果不是-1代表在原来基础上修改
-- 参数 fileName，笔记的名字 
+- 参数 id，如果是-1代表是新笔记，如果不是-1代表在原来基础上修改
+- 参数 name，笔记的名字 
 
 ### /server/validSession
 

@@ -71,7 +71,7 @@ class SignUp extends Component
                 .then(res =>
                 {
                     const {isSuccess, msg} = res;
-                    Alert(msg, isSuccess);
+                    Alert.show(msg, isSuccess);
                     if (isSuccess)
                     {
                         browserHistory.push('/Login');

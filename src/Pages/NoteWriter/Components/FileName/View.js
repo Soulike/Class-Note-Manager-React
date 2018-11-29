@@ -5,44 +5,45 @@ import style from './FileName.module.scss';
 
 class FileName extends Component
 {
+    static getStoredName()
+    {
+        return localStorageGet('name');
+    };
+
+    static storeName(value)
+    {
+        localStorageSet('name', value);
+    };
+
     componentDidMount()
     {
-        const fileName = this.getStoredFileName();
+        const name = FileName.getStoredName();
 
-        if (fileName)
+        if (name)
         {
-            this.refs.filename.value = fileName;
-            this.storeFileName(fileName);
+            this.refs.filename.value = name;
+            FileName.storeName(name);
         }
         else
         {
             this.refs.filename.value = '未命名';
-            this.storeFileName('未命名');
+            FileName.storeName('未命名');
         }
     }
 
     componentDidUpdate(prevProp, prevState, snapshot)
     {
-        const {title} = this.props;
-        if (title)
+        const {name} = this.props;
+        if (name)
         {
-            this.refs.filename.value = title;
+            this.refs.filename.value = name;
+            FileName.storeName(name);
         }
     }
 
-    getStoredFileName = () =>
-    {
-        return localStorageGet('fileName');
-    };
-
-    storeFileName = (value) =>
-    {
-        localStorageSet('fileName', value);
-    };
-
     onInputChange = (e) =>
     {
-        this.storeFileName(e.target.value);
+        FileName.storeName(e.target.value);
     };
 
     render()
@@ -61,7 +62,7 @@ class FileName extends Component
 }
 
 FileName.propTypes = {
-    title: PropTypes.string      // 用于预先填充数据
+    name: PropTypes.string      // 用于预先填充数据
 };
 
 export default FileName;

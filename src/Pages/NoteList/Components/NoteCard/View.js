@@ -25,7 +25,7 @@ class NoteCard extends Component
                 postAsync(requestPrefix('/deleteNote'), {id})
                     .then(res =>
                     {
-                        const {isSuccess, msg, data} = res;
+                        const {isSuccess, msg} = res;
                         Alert.show(msg, isSuccess);
                         setTimeout(() =>
                         {
@@ -45,7 +45,7 @@ class NoteCard extends Component
 
     render()
     {
-        const {id, name, lastModified} = this.props;
+        const {id, name, lastModifyTime} = this.props;
         return (
             <div className={style.NoteCard}>
                 <div className={style.left}>
@@ -55,7 +55,7 @@ class NoteCard extends Component
                     <div className={style.upper}>
                         <div className={style.noteName}>{name}</div>
                         <div className={style.buttonWrapper}>
-                            <Link onlyActiveOnIndex={false} to={`/NoteWriter?noteId=${id}`} target={'_blank'}>
+                            <Link onlyActiveOnIndex={false} to={`/NoteWriter?id=${id}`}>
                                 <button className={style.modifyButton} title={'修改笔记'}>
                                     <FontAwesomeIcon icon={solidIcon.faPencilAlt} className={style.buttonIcon}/>
                                 </button>
@@ -67,7 +67,7 @@ class NoteCard extends Component
                     </div>
                     <div className={style.lastModifiedDate}>
                         最后修改：
-                        {generateTimeStr(lastModified)}
+                        {generateTimeStr(lastModifyTime)}
                     </div>
                 </div>
             </div>
@@ -78,7 +78,7 @@ class NoteCard extends Component
 NoteCard.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
-    lastModified: PropTypes.number.isRequired
+    lastModifyTime: PropTypes.string.isRequired
 };
 
 export default NoteCard;

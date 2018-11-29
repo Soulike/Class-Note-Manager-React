@@ -30,9 +30,9 @@ export function login(username, password)
                 const {isSuccess, msg} = res;
                 if (isSuccess)
                 {
-                    browserHistory.push('/NoteList');
                     dispatch(loginSuccess());
                     setLocalStorageOnlineToken();
+                    browserHistory.push('/NoteList');
                 }
                 else
                 {

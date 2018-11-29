@@ -1,7 +1,7 @@
 import Store from '../../Store';
 import {View as Alert} from '../../Components/Alert';
 import {setOffline, setOnline} from './Actions/Actions';
-import {getAsync, localStorageGet, localStorageSet, requestPrefix} from '../../Static/Functions';
+import {getAsync, localStorageGet, localStorageRemove, localStorageSet, requestPrefix} from '../../Static/Functions';
 
 export function requireLogin(nextState, replace)
 {
@@ -24,12 +24,12 @@ export function checkSession()
             if (!isSuccess)
             {
                 setLocalStorageOfflineToken();
-                Store.dispatch(setOnline());
+                Store.dispatch(setOffline());
             }
             else
             {
                 setLocalStorageOnlineToken();
-                Store.dispatch(setOffline());
+                Store.dispatch(setOnline());
             }
         })
         .catch(e =>
@@ -40,10 +40,10 @@ export function checkSession()
 
 export function setLocalStorageOnlineToken()
 {
-    localStorageSet('hasLoggedIn', true);
+    localStorageSet('hasLoggedIn', true.toString());
 }
 
 export function setLocalStorageOfflineToken()
 {
-    localStorageSet('hasLoggedIn', false);
+    localStorageRemove('hasLoggedIn');
 }

@@ -7,9 +7,19 @@ import {convert} from './Actions/Actions';
 
 class Editor extends Component
 {
+    static getStoredContent()
+    {
+        return localStorageGet('content');
+    }
+
+    static storeContent(content)
+    {
+        localStorageSet('content', content);
+    }
+
     componentDidMount()
     {
-        const content = localStorageGet('content');
+        const content = Editor.getStoredContent();
 
         if (content)
         {
@@ -22,19 +32,25 @@ class Editor extends Component
         }
     }
 
-    componentDidUpdate(prevProp, prevState, snapshot)
+    componentDidUpdate(prevProps, prevState, snapshot)
     {
         const {content} = this.props;
         if (content)
         {
             this.refs.editorInput.value = content;
             Store.dispatch(convert(content));
+            Editor.storeContent(content);
+        }
+        else
+        {
+            Store.dispatch(convert(''));
+            Editor.storeContent('');
         }
     }
 
     onInput = (e) =>
     {
-        localStorageSet('content', e.target.value);
+        Editor.storeContent(e.target.value);
         Store.dispatch(convert(e.target.value));
     };
 

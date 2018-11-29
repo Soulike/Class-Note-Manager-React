@@ -14,8 +14,8 @@ class NoteWriter extends Component
     {
         super(...arguments);
         this.state = {
-            noteId: -1,
-            title: undefined,
+            id: -1,
+            name: undefined,
             content: undefined
         };
     }
@@ -24,19 +24,20 @@ class NoteWriter extends Component
     componentDidMount()
     {
         checkSession();
-        const {noteId} = this.props.location.query;
-        if (noteId !== undefined)
+
+        const {id} = this.props.location.query;
+        if (id !== undefined)
         {
-            this.setState({noteId});
-            getAsync(requestPrefix('/getNote'), false, {id: noteId})
+            this.setState({id});
+            getAsync(requestPrefix('/getNote'), false, {id})
                 .then(res =>
                 {
                     const {isSuccess, msg, data} = res;
                     if (isSuccess)
                     {
-                        const {title, content} = data;
+                        const {name, content} = data;
                         this.setState({
-                            title,
+                            name,
                             content
                         });
                     }
@@ -59,13 +60,13 @@ class NoteWriter extends Component
     onSubmitButtonClick = e =>
     {
         e.preventDefault();
-        const fileName = localStorageGet('fileName');
+        const name = localStorageGet('name');
         const content = localStorageGet('content');
-        const {noteId} = this.state;
+        const {id} = this.state;
         postAsync(requestPrefix('/submitNote'), {
-            fileName,
+            name,
             content,
-            noteId
+            id
         })
             .then(res =>
             {
@@ -74,7 +75,7 @@ class NoteWriter extends Component
                 if (isSuccess)
                 {
                     browserHistory.push('/NoteList');
-                    localStorageRemove('fileName');
+                    localStorageRemove('name');
                     localStorageRemove('content');
                 }
             })
@@ -88,11 +89,11 @@ class NoteWriter extends Component
 
     render()
     {
-        const {title, content} = this.state;
+        const {name, content} = this.state;
         return (
             <div className={style.NoteWriter}>
                 <div className={style.fileInfoArea}>
-                    <FileName title={title}/>
+                    <FileName name={name}/>
                     <button className={style.submitButton} onClick={this.onSubmitButtonClick}>提交</button>
                 </div>
                 <div className={style.editorArea}>
