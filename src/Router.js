@@ -6,6 +6,7 @@ import {View as SignUp} from './Pages/SignUp';
 import {View as Root} from './Pages/Root';
 import {View as NoteList} from './Pages/NoteList';
 import {View as NoteReader} from './Pages/NoteReader';
+import {View as NoteWriter} from './Pages/NoteWriter';
 
 
 const Routes = () => (
