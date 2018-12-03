@@ -4,6 +4,7 @@ import style from './Editor.module.scss';
 import {localStorageGet, localStorageSet} from '../../../../Static/Functions';
 import Store from '../../../../Store';
 import {convert} from './Actions/Actions';
+import {View as Alert} from '../../../../Components/Alert';
 
 class Editor extends Component
 {
@@ -19,16 +20,23 @@ class Editor extends Component
 
     componentDidMount()
     {
-        const content = Editor.getStoredContent();
-
-        if (content)
+        Store.dispatch(convert(''));
+        const lastId = parseInt(localStorageGet('lastModifyId'));
+        let {id} = this.props.location.query;
+        id = parseInt(id);
+        if (id && lastId === id)
         {
-            this.refs.editorInput.value = content;
-            Store.dispatch(convert(content));
+            const content = Editor.getStoredContent();
+            if (content)
+            {
+                Alert.show('已为您恢复上次未提交内容', true);
+                this.refs.editorInput.value = content;
+                Store.dispatch(convert(content));
+            }
         }
         else
         {
-            Store.dispatch(convert(''));
+            localStorageSet('lastModifyId', id.toString());
         }
     }
 
@@ -69,7 +77,8 @@ class Editor extends Component
 }
 
 Editor.propTypes = {
-    content: PropTypes.string  // 用于预先填充内容
+    content: PropTypes.string,  // 用于预先填充内容
+    location: PropTypes.object
 };
 
 export default Editor;

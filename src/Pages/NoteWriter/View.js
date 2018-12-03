@@ -6,7 +6,6 @@ import {View as Editor} from './Components/Editor';
 import {View as Previewer} from './Components/Previewer';
 import {getAsync, localStorageGet, localStorageRemove, postAsync, requestPrefix} from '../../Static/Functions';
 import {View as Alert} from '../../Components/Alert';
-import {checkSession} from '../Login/Functions';
 
 class NoteWriter extends Component
 {
@@ -23,7 +22,6 @@ class NoteWriter extends Component
 
     componentDidMount()
     {
-        checkSession();
 
         const {id} = this.props.location.query;
         if (id !== undefined)
@@ -90,15 +88,16 @@ class NoteWriter extends Component
     render()
     {
         const {name, content} = this.state;
+        const {location} = this.props;
         return (
             <div className={style.NoteWriter}>
                 <div className={style.fileInfoArea}>
-                    <FileName name={name}/>
+                    <FileName name={name} location={location}/>
                     <button className={style.submitButton} onClick={this.onSubmitButtonClick}>提交</button>
                 </div>
                 <div className={style.editorArea}>
                     <div className={style.editor}>
-                        <Editor content={content}/>
+                        <Editor content={content} location={location}/>
                     </div>
                     <div className={style.previewer}>
                         <Previewer/>

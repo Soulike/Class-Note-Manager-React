@@ -26,17 +26,39 @@
         .leftIcon {
             line-height: 100%;
         }
+
+        @media (max-width: 1000px) {
+            & {
+                display: none;
+            }
+        }
     }
 
     .right {
         width: 90%;
         display: inline-block;
 
+        @media (max-width: 1000px) {
+            & {
+                width: 100%;
+            }
+        }
+
         .upper {
+            width: 100%;
+            box-sizing: border-box;
+
             .noteName {
                 display: inline-block;
                 font-size: 2rem;
                 line-height: 2rem;
+
+                @media (max-width: 500px) {
+                    & {
+                        font-size: 1.5rem;
+                        line-height: 1.5rem;
+                    }
+                }
             }
 
             .buttonWrapper {
@@ -78,6 +100,11 @@
         .lastModifiedDate {
             margin-top: 1rem;
             color: #666;
+            @media (max-width: 500px) {
+                & {
+                    display: none;
+                }
+            }
         }
     }
 

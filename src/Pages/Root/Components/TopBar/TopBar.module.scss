@@ -2,8 +2,7 @@
 
 $topBarHeight: 3rem;
 
-.TopBar
-{
+.TopBar {
     height: $topBarHeight;
     background-color: #333;
     background: linear-gradient(to bottom, #222, #333);
@@ -11,18 +10,15 @@ $topBarHeight: 3rem;
     padding: 0 2rem;
     user-select: none;
 
-    .linkWrapper
-    {
+    .linkWrapper {
         height: 100%;
         display: inline-block;
         margin: 0 2rem;
     }
 
-    .title
-    {
+    .title {
         display: inline-block;
-        font:
-        {
+        font: {
             size: 1.5rem;
             family: $serif;
             weight: bold;
@@ -31,15 +27,23 @@ $topBarHeight: 3rem;
 
         color: $lightFontColor;
 
-        .icon
-        {
+        .icon {
             display: inline-block;
             margin-right: 0.5rem;
         }
     }
 
-    a
-    {
+    @media (max-width: 500px) {
+        .title {
+            display: none;
+        }
+
+        .linkWrapper {
+            margin: 0;
+        }
+    }
+
+    a {
         color: $lightFontColor;
     }
 }

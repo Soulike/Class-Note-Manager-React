@@ -1,7 +1,13 @@
 .NoteList
 {
     $borderStyle: #DDD 1px solid;
-    width: 60rem;
+    width: 100%;
+
+    @media (min-width: 1500px) {
+        width: 80%;
+    }
+
+    box-sizing: border-box;
     margin: 0 auto;
     padding: 3rem 2rem;
     border:

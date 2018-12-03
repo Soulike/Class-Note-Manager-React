@@ -17,12 +17,23 @@ class FileName extends Component
 
     componentDidMount()
     {
-        const name = FileName.getStoredName();
-
-        if (name)
+        const lastId = parseInt(localStorageGet('lastModifyId'));
+        let {id} = this.props.location.query;
+        id = parseInt(id);
+        if (id && lastId === id)
         {
-            this.refs.filename.value = name;
-            FileName.storeName(name);
+            const name = FileName.getStoredName();
+
+            if (name)
+            {
+                this.refs.filename.value = name;
+                FileName.storeName(name);
+            }
+            else
+            {
+                this.refs.filename.value = '未命名';
+                FileName.storeName('未命名');
+            }
         }
         else
         {
@@ -62,7 +73,8 @@ class FileName extends Component
 }
 
 FileName.propTypes = {
-    name: PropTypes.string      // 用于预先填充数据
+    name: PropTypes.string,      // 用于预先填充数据
+    location: PropTypes.object
 };
 
 export default FileName;

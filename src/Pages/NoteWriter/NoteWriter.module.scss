@@ -42,6 +42,11 @@ $fileInfoAreaHeight: 5rem;
         bottom: 0;
         box-sizing: border-box;
         margin: 0.5rem;
+        @media (max-width: 1000px) {
+            & {
+                width: 100%;
+            }
+        }
     }
 
     .previewer
@@ -53,5 +58,11 @@ $fileInfoAreaHeight: 5rem;
         box-sizing: border-box;
         margin: 0.5rem;
         float: right;
+
+        @media (max-width: 1000px) {
+            & {
+                display: none;
+            }
+        }
     }
 }

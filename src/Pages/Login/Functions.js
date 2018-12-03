@@ -17,7 +17,7 @@ export function requireLogin(nextState, replace)
 
 export function checkSession()
 {
-    getAsync(requestPrefix('/validSession'), false)
+    getAsync(requestPrefix('/validSession'), false, {}, {timeout: 1500})
         .then(res =>
         {
             const {isSuccess} = res;

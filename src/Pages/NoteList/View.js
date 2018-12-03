@@ -5,7 +5,6 @@ import {View as NoteCard} from './Components/NoteCard';
 import {View as Title} from '../../Components/Title';
 import {getAsync, requestPrefix} from '../../Static/Functions';
 import {View as Alert} from '../../Components/Alert';
-import {checkSession} from '../Login/Functions';
 
 class NoteList extends Component
 {
@@ -13,20 +12,23 @@ class NoteList extends Component
     {
         super(...arguments);
         this.state = {
-            noteList: []
+            noteList: [],
+            requestSucceed: false
         };
     }
 
     componentDidMount()
     {
-        checkSession();
         getAsync(requestPrefix('/getNoteList'), false)
             .then(res =>
             {
                 const {isSuccess, msg, data} = res;
                 if (isSuccess)
                 {
-                    this.setState({noteList: data});
+                    this.setState({
+                        noteList: data,
+                        requestSucceed: true
+                    });
                 }
                 else
                 {
@@ -42,13 +44,14 @@ class NoteList extends Component
 
     render()
     {
-        const {noteList} = this.state;
+        const {noteList, requestSucceed} = this.state;
         return (
             <div className={style.NoteList}>
                 <Title text={'笔记列表'}/>
                 <div className={style.listArea}>
                     {
-                        noteList.length === 0 ? <h2 style={{textAlign: 'center'}}>你没有笔记的样子，快去写个新笔记吧！</h2> :
+                        requestSucceed ? noteList.length === 0 ?
+                            <h2 style={{textAlign: 'center'}}>你没有笔记的样子，快去写个新笔记吧！</h2> :
                             noteList.map(note =>
                             {
                                 return (
@@ -58,7 +61,7 @@ class NoteList extends Component
                                         <NoteCard {...note}/>
                                     </Link>
                                 );
-                            })
+                            }) : <h2 style={{textAlign: 'center'}}>Loading……</h2>
                     }
                 </div>
             </div>

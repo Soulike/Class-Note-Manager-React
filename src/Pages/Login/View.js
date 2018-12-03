@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import * as Actions from './Actions/Actions';
 import {View as Title} from '../../Components/Title';
 import style from './Login.module.scss';
-import {checkSession} from './Functions';
 import {Link} from 'react-router';
 
 class Login extends Component
@@ -16,12 +15,6 @@ class Login extends Component
             password: ''
         };
     }
-
-    componentDidMount()
-    {
-        checkSession();
-    }
-
 
     onUsernameChange = (e) =>
     {

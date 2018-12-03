@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import style from './SignUp.module.scss';
 import * as REGEX from '../../Static/Regex';
 import {View as Title} from '../../Components/Title';
-import {checkSession} from '../Login/Functions';
 import {View as Alert} from '../../Components/Alert';
 import {getSHA256, postAsync, requestPrefix} from '../../Static/Functions';
 import {browserHistory, Link} from 'react-router';
@@ -17,11 +16,6 @@ class SignUp extends Component
             password: '',
             repeatPassword: ''
         };
-    }
-
-    componentDidMount()
-    {
-        checkSession();
     }
 
 

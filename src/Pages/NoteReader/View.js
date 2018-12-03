@@ -3,7 +3,6 @@ import style from './NoteReader.module.scss';
 import Title from '../../Components/Title/View';
 import {generateTimeStr, getAsync, requestPrefix} from '../../Static/Functions';
 import {View as Alert} from '../../Components/Alert';
-import {checkSession} from '../Login/Functions';
 import showdown from 'showdown';
 
 class NoteReader extends Component
@@ -25,7 +24,6 @@ class NoteReader extends Component
 
     componentDidMount()
     {
-        checkSession();
         const {id} = this.props.location.query;
         getAsync(requestPrefix('/getNote'), false, {id})
             .then(res =>
@@ -59,7 +57,10 @@ class NoteReader extends Component
             <div className={style.NoteReader}>
                 <Title text={name}/>
                 <div className={style.lastModified}>{generateTimeStr(lastModifyTime)}</div>
-                <div className={style.content} dangerouslySetInnerHTML={{__html: this.converter.makeHtml(content)}}/>
+                <div className={style.contentWrapper}>
+                    <div className={style.content}
+                         dangerouslySetInnerHTML={{__html: this.converter.makeHtml(content)}}/>
+                </div>
             </div>
         );
     }
