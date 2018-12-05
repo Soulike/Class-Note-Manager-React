@@ -6,6 +6,11 @@ import style from './Root.module.scss';
 class Root extends Component
 {
 
+    componentDidMount()
+    {
+        document.title = 'MagNote';
+    }
+
     render()
     {
         return (

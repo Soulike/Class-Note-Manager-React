@@ -18,6 +18,11 @@ class SignUp extends Component
         };
     }
 
+    componentDidMount()
+    {
+        document.title = '注册 - MagNote';
+    }
+
 
     onUsernameChange = (e) =>
     {

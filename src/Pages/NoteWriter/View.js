@@ -22,7 +22,7 @@ class NoteWriter extends Component
 
     componentDidMount()
     {
-
+        document.title = '笔记编辑 - MagNote';
         const {id} = this.props.location.query;
         if (id !== undefined)
         {

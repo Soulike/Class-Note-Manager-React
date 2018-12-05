@@ -19,6 +19,9 @@ class NoteList extends Component
 
     componentDidMount()
     {
+
+        document.title = '笔记列表 - MagNote';
+
         getAsync(requestPrefix('/getNoteList'), false)
             .then(res =>
             {

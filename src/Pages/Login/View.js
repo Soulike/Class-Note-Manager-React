@@ -16,6 +16,12 @@ class Login extends Component
         };
     }
 
+    componentDidMount()
+    {
+        document.title = '登录 - MagNote';
+    }
+
+
     onUsernameChange = (e) =>
     {
         e.preventDefault();

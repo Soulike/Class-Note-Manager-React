@@ -24,6 +24,8 @@ class NoteReader extends Component
 
     componentDidMount()
     {
+        document.title = '笔记阅读 - MagNote';
+
         const {id} = this.props.location.query;
         getAsync(requestPrefix('/getNote'), false, {id})
             .then(res =>
@@ -32,6 +34,7 @@ class NoteReader extends Component
                 if (isSuccess)
                 {
                     const {name, content, lastModifyTime} = data;
+                    document.title = `${name} - MagNote`;
                     this.setState({
                         name,
                         content,
